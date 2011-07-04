@@ -7,7 +7,7 @@ fi
 
 # bug if no not use sh -c
 # see: http://www.fan.gr.jp/~azure/diary/dia201002.html#n20100224
-sh -c "rsync -avz \
+sh -c "rsync -avz -c \
     $([ "x$port" != x ] && echo "-e \"ssh -p $port\"") \
     --exclude=*.swp \
     --exclude=.git \
