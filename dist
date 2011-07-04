@@ -5,9 +5,11 @@ if [ "x$1" != "x" ]; then
     host=${1%:$port}
 fi
 
-rsync -avz -n \
+# bug if no not use sh -c
+# see: http://www.fan.gr.jp/~azure/diary/dia201002.html#n20100224
+sh -c "rsync -avz \
     $([ "x$port" != x ] && echo "-e \"ssh -p $port\"") \
     --exclude=*.swp \
     --exclude=.git \
     --exclude=$(basename $0) \
-    . $([ "x$host" != x ] && echo $host:)~/
+    . $([ "x$host" != x ] && echo $host:)~/"
