@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ "x$1" != "x" ]; then
+    port=$(echo $1 | perl -nle 'print $1 if /\:(\d+)$/')
+    host=${1%:$port}
+fi
+
+rsync -avz -n \
+    $([ "x$port" != x ] && echo "-e \"ssh -p $port\"") \
+    --exclude=*.swp \
+    --exclude=.git \
+    --exclude=$(basename $0) \
+    . $([ "x$host" != x ] && echo $host:)~/
