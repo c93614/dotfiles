@@ -51,7 +51,7 @@ complete -f "sudo vim"
 
 agent_file=/tmp/ssh-agent-$USER.sock
 
-if [ "$SSH_TTY" -a "$SSH_AUTH_SOCK" != $agent_file ]; then
+if [ "$SSH_TTY" -a "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != $agent_file ]; then
     ln -sfn $SSH_AUTH_SOCK $agent_file
     export SSH_AUTH_SOCK=$agent_file
 fi
