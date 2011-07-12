@@ -2,6 +2,7 @@ let g:ctagsdir = "exctags"
 let g:backupdir = "~/.vim/backup"
 
 "source /etc/vim/vimrc 
+source ~/.vim/vimrc 
 "source ~/plugin/taglist.vim
 "source ~/project/project.vim
 
