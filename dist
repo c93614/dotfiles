@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ ! -d ".vim/backup" ]; then
+    mkdir .vim/backup
+fi
+
 if [ "x$1" != "x" ]; then
     port=$(echo $1 | perl -nle 'print $1 if /\:(\d+)$/')
     host=${1%:$port}
