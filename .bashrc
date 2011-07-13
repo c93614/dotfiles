@@ -49,6 +49,10 @@ alias sudo='A=`alias` sudo '
 complete -f "sudo vim"
 #complete -cf sudo
 
+# sudo complete hostname for ssh command
+# @see http://bit.ly/p7VNs6
+complete -W "$(while IFS=' ,' read host t; do echo $host; done < ~/.ssh/known_hosts)" ssh
+
 agent_file=/tmp/ssh-agent-$USER.sock
 
 if [ "$SSH_TTY" -a "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != $agent_file ]; then
