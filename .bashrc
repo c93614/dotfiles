@@ -51,7 +51,9 @@ complete -f "sudo vim"
 
 # sudo complete hostname for ssh command
 # @see http://bit.ly/p7VNs6
-complete -W "$(while IFS=' ,' read host t; do echo $host; done < ~/.ssh/known_hosts)" ssh
+if [ -d ~/.ssh/known_hosts ]; then
+    complete -W "$(while IFS=' ,' read host t; do echo $host; done < ~/.ssh/known_hosts)" ssh
+fi
 
 agent_file=/tmp/ssh-agent-$USER.sock
 
