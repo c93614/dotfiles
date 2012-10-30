@@ -52,6 +52,10 @@ umask 002
 complete -f "sudo vim"
 #complete -cf sudo
 
+# get history via up/down
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 # sudo complete hostname for ssh command
 # @see http://bit.ly/p7VNs6
 if [ -d ~/.ssh/known_hosts ]; then
