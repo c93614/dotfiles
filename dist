@@ -4,16 +4,14 @@ if [ ! -d ".vim/backup" ]; then
     mkdir .vim/backup
 fi
 
-if [ "x$1" != "x" ]; then
-    port=$(echo $1 | perl -nle 'print $1 if /\:(\d+)$/')
-    host=${1%:$port}
-fi
+curl -L http://install.ohmyz.sh | sh
 
 # bug if no not use sh -c
 # see: http://www.fan.gr.jp/~azure/diary/dia201002.html#n20100224
 sh -c "rsync -avz --no-o --no-g -c \
-    $([ "x$port" != x ] && echo "-e \"ssh -p $port\"") \
     --exclude=*.swp \
     --exclude=.git \
-    --exclude=$(basename $0) \
-    . $([ "x$host" != x ] && echo $host:)~/"
+    --exclude=$(basename $0) . ~/"
+
+sed -i 's/ZSH_THEME=.*$/ZSH_THEME="gallifrey"/' ~/.zshrc
+sed -i 's/plugins=.*$/plugins=(git tmux-ssh-agent)/' ~/.zshrc
