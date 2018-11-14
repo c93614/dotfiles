@@ -43,6 +43,7 @@ set mouse=
 autocmd FileType sh map <buffer> <leader>r :w!<cr>:!bash %<cr>
 autocmd FileType python map <buffer> <leader>r :w!<cr>:!python27 %<cr>
 autocmd FileType php map <buffer> <leader>r :w!<cr>:!php %<cr>
+au BufRead,BufNewFile *.go set filetype=go
 
 "autocmd BufNewFile *.php,*.inc 0r ~/.vim/skeleton.php | normal Gdd3G 
 
