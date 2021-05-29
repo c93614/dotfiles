@@ -2,12 +2,14 @@
 
 curl -L http://install.ohmyz.sh | sh
 
+BASE_DIR=$(basename $0)
+
 # bug if no not use sh -c
 # see: http://www.fan.gr.jp/~azure/diary/dia201002.html#n20100224
 sh -c "rsync -avz --no-o --no-g -c \
     --exclude=*.swp \
     --exclude=.git \
-    --exclude=$(basename $0) . ~/"
+    --exclude=$BASE_DIR . ~/"
 
 grep 'ZSH_THEME="gallifrey"' ~/.zshrc >& /dev/null
 if [ $? -gt 0 ]; then
